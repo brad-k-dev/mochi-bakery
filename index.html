@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모찌 베이커리 · Mochi Bakery</title>
+<meta name="description" content="말랑말랑 모찌를 쟁반에 올려 한 줄을 채우면 뿅! 50가지 맛과 50명의 동물 손님을 모으는 힐링 블록 퍼즐. / A cozy mochi block puzzle.">
+<meta property="og:title" content="모찌 베이커리 · Mochi Bakery">
+<meta property="og:description" content="끌어다 놓으면 뿅! 힐링 블록 퍼즐 / Drag, drop, pop! A cozy block puzzle.">
+<meta property="og:image" content="icon.png">
+<link rel="icon" href="icon-small.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+  :root { --bg:#fff6ec; --dot:#fbe8d6; --card:#fffdf9; --ink:#6b4a3a; --dim:#9a7c6c; --line:#e5c7aa; --pink:#ff8fa3; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    background-image: radial-gradient(var(--dot) 4px, transparent 4.5px); background-size: 34px 34px;
+    font: 400 16px/1.7 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang SC", system-ui, sans-serif; }
+  /* Only the selected language is shown; Korean is the default (also without JavaScript). */
+  body[data-lang] [lang] { display: none !important; }
+  body[data-lang="ko"] [lang="ko"], body[data-lang="en"] [lang="en"], body[data-lang="ja"] [lang="ja"], body[data-lang="zh"] [lang="zh"] { display: revert !important; }
+  body[data-lang="ko"] .shots[lang="ko"], body[data-lang="en"] .shots[lang="en"], body[data-lang="ja"] .shots[lang="ja"], body[data-lang="zh"] .shots[lang="zh"] { display: grid !important; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  a { color: #e0607a; }
+  .round { font-family: "Jua", "Hiragino Maru Gothic ProN", "PingFang SC", -apple-system, sans-serif; font-weight: 400; }
+  header { text-align: center; padding: 56px 0 24px; }
+  header img { width: 128px; height: 128px; border-radius: 28px; box-shadow: 0 8px 0 var(--line); }
+  h1 { font-size: 42px; margin: 22px 0 6px; }
+  .sub { color: var(--dim); margin: 0 0 4px; font-size: 16px; }
+  .tagline { font-size: 19px; margin: 10px 0 0; color: var(--pink); }
+  .langs { display: inline-flex; flex-wrap: wrap; justify-content: center; margin: 24px 0 0; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--card); }
+  .langs button { font: inherit; font-size: 15px; padding: 8px 16px; border: 0; background: transparent; color: var(--dim); cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--pink); color: #fff; }
+  .shots { grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 32px 0; }
+  .shots img { width: 100%; border-radius: 18px; box-shadow: 0 6px 0 var(--line); display: block; }
+  section { background: var(--card); border: 2px solid var(--line); border-radius: 24px; padding: 22px 22px 10px; margin: 0 0 28px; }
+  h2 { font-size: 23px; margin: 0 0 14px; color: var(--pink); }
+  h3 { font-size: 16px; margin: 18px 0 4px; }
+  p, li { margin: 0 0 10px; }
+  ul { padding-left: 20px; }
+  .mail { font-size: 18px; }
+  footer { color: var(--dim); font-size: 14px; border-top: 1px solid var(--line); padding: 20px 0 48px; text-align: center; }
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    .shots { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body data-lang="ko">
+<div class="wrap">
+  <header>
+    <img src="icon.png" alt="App icon">
+    <h1 class="round"><span lang="ko">모찌 베이커리</span><span lang="en">Mochi Bakery</span><span lang="ja">もちベーカリー</span><span lang="zh">麻薯烘焙坊</span></h1>
+    <p class="sub round"><span lang="ko">Mochi Bakery</span><span lang="en">모찌 베이커리</span><span lang="ja">Mochi Bakery</span><span lang="zh">Mochi Bakery</span></p>
+    <p class="tagline round"><span lang="ko">끌어다 놓으면 뿅! 힐링 블록 퍼즐</span><span lang="en">Drag, drop, pop! A cozy block puzzle</span><span lang="ja">ドラッグしてポン! 癒しのブロックパズル</span><span lang="zh">拖一拖就消除！治愈系方块拼图</span></p>
+    <div class="langs round" role="group" aria-label="Language">
+      <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+      <button type="button" data-set-lang="ja" aria-pressed="false">日本語</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false">简体中文</button>
+    </div>
+  </header>
+
+  <div class="shots" lang="ko"><img src="shots/ko/1.jpg" alt="모찌 퍼즐 플레이 화면"><img src="shots/ko/2.jpg" alt="튜토리얼"><img src="shots/ko/3.jpg" alt="콤보"><img src="shots/ko/4.jpg" alt="모찌 도감"><img src="shots/ko/5.jpg" alt="게임 결과"></div>
+  <div class="shots" lang="en"><img src="shots/en/1.jpg" alt="Gameplay"><img src="shots/en/2.jpg" alt="Tutorial"><img src="shots/en/3.jpg" alt="Combo"><img src="shots/en/4.jpg" alt="Mochi Book"><img src="shots/en/5.jpg" alt="Results"></div>
+  <div class="shots" lang="ja"><img src="shots/ja/1.jpg" alt="プレイ画面"><img src="shots/ja/2.jpg" alt="チュートリアル"><img src="shots/ja/3.jpg" alt="コンボ"><img src="shots/ja/4.jpg" alt="もちずかん"><img src="shots/ja/5.jpg" alt="結果"></div>
+  <div class="shots" lang="zh"><img src="shots/zh/1.jpg" alt="游戏画面"><img src="shots/zh/2.jpg" alt="教程"><img src="shots/zh/3.jpg" alt="连击"><img src="shots/zh/4.jpg" alt="麻薯图鉴"><img src="shots/zh/5.jpg" alt="结果"></div>
+
+  <section lang="ko">
+    <h2 class="round">지원</h2>
+    <p>말랑말랑한 모찌를 쟁반에 올려 가로나 세로 한 줄을 채우면 뿅 터져요. 플레이할수록 50가지 맛과 50명의 동물 손님이 하나씩 해금돼요.</p>
+    <h3 class="round">문의</h3>
+    <p class="mail"><a href="mailto:cloov2026@gmail.com">cloov2026@gmail.com</a></p>
+    <p>버그 제보 시 기기 모델과 iOS 버전을 함께 보내 주시면 빠르게 확인할 수 있습니다.</p>
+    <h3 class="round">자주 묻는 질문</h3>
+    <ul>
+      <li><strong>진행 기록은 어디에 저장되나요?</strong> 기기 안에만 저장됩니다. 앱을 삭제하면 기록도 함께 삭제됩니다.</li>
+      <li><strong>새 맛과 손님은 어떻게 해금하나요?</strong> 줄 터뜨리기, 손님 대접, 최고 점수, 플레이 횟수 목표를 달성하면 열립니다. 도감에서 각 목표와 진행 상황을 볼 수 있어요.</li>
+      <li><strong>소리가 안 나요.</strong> 게임 오른쪽 위 스피커 버튼과 기기 볼륨, 무음 모드를 확인해 주세요.</li>
+      <li><strong>진동이 안 느껴져요.</strong> 설정 → 사운드 및 햅틱 → 시스템 햅틱이 켜져 있는지 확인해 주세요.</li>
+      <li><strong>결제나 광고가 있나요?</strong> 없습니다. 인터넷 연결도 필요 없어요.</li>
+    </ul>
+  </section>
+
+  <section lang="en">
+    <h2 class="round">Support</h2>
+    <p>Drop squishy mochi onto the tray and fill a row or column to pop them. The more you play, the more of the 50 flavors and 50 animal customers you unlock.</p>
+    <h3 class="round">Contact</h3>
+    <p class="mail"><a href="mailto:cloov2026@gmail.com">cloov2026@gmail.com</a></p>
+    <p>For bug reports, please include your device model and iOS version.</p>
+    <h3 class="round">FAQ</h3>
+    <ul>
+      <li><strong>Where is my progress saved?</strong> On your device only. Deleting the app deletes it.</li>
+      <li><strong>How do I unlock flavors and customers?</strong> Reach goals for lines popped, customers served, best score and rounds played. The Mochi Book shows each goal and your progress.</li>
+      <li><strong>No sound?</strong> Check the speaker button at the top right of the game, your device volume and the silent switch.</li>
+      <li><strong>No vibration?</strong> Check Settings → Sounds &amp; Haptics → System Haptics.</li>
+      <li><strong>Any purchases or ads?</strong> None, and no internet connection is needed.</li>
+    </ul>
+  </section>
+
+  <section lang="ja">
+    <h2 class="round">サポート</h2>
+    <p>もちもちのもちをトレイにのせて、たてか横の一列をそろえるとポンと消えます。遊ぶほど、50の味と50の動物のお客さんがひとつずつ解放されます。</p>
+    <h3 class="round">お問い合わせ</h3>
+    <p class="mail"><a href="mailto:cloov2026@gmail.com">cloov2026@gmail.com</a></p>
+    <p>不具合のご報告の際は、端末の機種とiOSのバージョンもお知らせください。</p>
+    <h3 class="round">よくある質問</h3>
+    <ul>
+      <li><strong>進行状況はどこに保存されますか?</strong> 端末内にのみ保存されます。アプリを削除すると記録も削除されます。</li>
+      <li><strong>新しい味やお客さんはどうやって解放しますか?</strong> 消した列の数、おもてなししたお客さんの数、ハイスコア、プレイ回数の目標を達成すると解放されます。もちずかんで目標と進み具合を確認できます。</li>
+      <li><strong>音が出ません。</strong> ゲーム右上のスピーカーボタン、端末の音量、消音モードをご確認ください。</li>
+      <li><strong>振動しません。</strong> 設定 → サウンドと触覚 → システムの触覚 がオンになっているかご確認ください。</li>
+      <li><strong>課金や広告はありますか?</strong> ありません。インターネット接続も不要です。</li>
+    </ul>
+  </section>
+
+  <section lang="zh">
+    <h2 class="round">支持</h2>
+    <p>把软糯的麻薯放到托盘上，填满横排或竖排就会消除。玩得越多，50种口味和50位动物客人就会一个个解锁。</p>
+    <h3 class="round">联系我们</h3>
+    <p class="mail"><a href="mailto:cloov2026@gmail.com">cloov2026@gmail.com</a></p>
+    <p>反馈问题时，请一并告知设备型号和iOS版本。</p>
+    <h3 class="round">常见问题</h3>
+    <ul>
+      <li><strong>游戏进度保存在哪里？</strong> 只保存在您的设备上。删除应用后进度也会删除。</li>
+      <li><strong>怎样解锁新口味和新客人？</strong> 达成消除行数、招待客人数、最高分和游戏局数的目标即可解锁。可以在麻薯图鉴中查看每个目标和进度。</li>
+      <li><strong>没有声音？</strong> 请检查游戏右上角的扬声器按钮、设备音量和静音开关。</li>
+      <li><strong>没有震动？</strong> 请检查 设置 → 声音与触感 → 系统触感 是否开启。</li>
+      <li><strong>有付费或广告吗？</strong> 没有，也不需要联网。</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 Brad Kim ·
+    <a data-keep-lang href="privacy.html"><span lang="ko">개인정보처리방침</span><span lang="en">Privacy Policy</span><span lang="ja">プライバシーポリシー</span><span lang="zh">隐私政策</span></a> ·
+    <a href="mailto:cloov2026@gmail.com">cloov2026@gmail.com</a>
+  </footer>
+</div>
+<script>
+  // Language: ?lang= → saved choice → browser language → Korean.
+  (function () {
+    var langs = ["ko", "en", "ja", "zh"];
+    var titles = { ko: "모찌 베이커리 · Mochi Bakery", en: "Mochi Bakery · 모찌 베이커리", ja: "もちベーカリー · Mochi Bakery", zh: "麻薯烘焙坊 · Mochi Bakery" };
+    function saved() { try { return localStorage.getItem("lang"); } catch (e) { return null; } }
+    function browser() { var l = (navigator.language || "").slice(0, 2); return langs.indexOf(l) >= 0 ? l : null; }
+    function set(lang, persist) {
+      if (langs.indexOf(lang) < 0) lang = "ko";
+      document.body.setAttribute("data-lang", lang);
+      document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+      document.title = titles[lang];
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.setLang === lang)); });
+      document.querySelectorAll("a[data-keep-lang]").forEach(function (a) { a.href = a.getAttribute("href").split("?")[0] + "?lang=" + lang; });
+      if (persist) {
+        try { localStorage.setItem("lang", lang); } catch (e) {}
+        history.replaceState(null, "", "?lang=" + lang);
+      }
+    }
+    set(new URLSearchParams(location.search).get("lang") || saved() || browser() || "ko", false);
+    document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { set(b.dataset.setLang, true); });
+    });
+  })();
+</script>
+</body>
+</html>
